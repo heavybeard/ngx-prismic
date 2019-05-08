@@ -8,19 +8,35 @@ This project is intended to provide easier integration of
 
 > Work in Progress... More featues and docs are coming in the future.
 
-## How to use
+## Usage
 
 This module is built on top of [prismic-javascript](https://github.com/prismicio/prismic-javascript)
 and [prismic-dom](https://github.com/prismicio/prismic-dom) as well as [angular](https://github.com/angular/angular).
 
-In `lib/renderer/` you find helper-functions and models around `prismic-dom` to generate HTML from
-the CMS-data. It is intended to grow if a common functionality is needed but not provided by `prismic-dom` itself.
+To use it in your project, run the following command:
 
-In `lib/universal` you find helper methods used in the context of prerendering pages with
-[Angular Universal](https://github.com/angular/universal).
+```sh
+npm install ngx-prismic
+# or
+yarn add ngx-prismic
+```
 
-Finally, in `lib/prismic-client` you find a service built with Angular's [`HttpClient`](https://angular.io/guide/http)
-to query the Prismic API.
+This package supports you at creating types for your Prismic Content (e.g. for `Title`, `Richtext` or
+`Image` components) and custom types (with the [`Slice`](https://github.com/exportarts/ngx-prismic/blob/master/lib/prismic-client/src/models/slice.model.ts) interface).
+
+For integrating with the Prismic API, we provide the
+[`PrismicService`](https://github.com/exportarts/ngx-prismic/blob/master/lib/prismic-client/src/services/prismic.service.ts).
+It is built with Angular's [`HttpClient`](https://angular.io/guide/http) and provides all options of
+the official Prismic API.
+
+For displaying your content, several Angular Pipes are available, for example to
+[render paragraphs](https://github.com/exportarts/ngx-prismic/blob/master/lib/prismic-client/src/pipes/render-html.pipe.ts).
+
+## Angular Universal
+
+In `ngx-prismic/universal` you find helper functions used in the context of prerendering pages with
+[Angular Universal](https://github.com/angular/universal). You can use them to resolve all your dynamic routes
+(e.g. all documents of type `blog_post`) to integrate them into the prerendering process.
 
 ## Dependency Management
 

@@ -5,15 +5,51 @@
  * This interface takes three generic parameters which make it
  * possible to use your own content model.
  * 
- * @param T Type - this slice's name
- * @param I Items - an interface representing the "Repeatable Zone"
- * @param P Primary - an interface representing your "Non-repeatable Zone"
+ * @param SliceType Type - this slice's name
+ * @param Repeatable Items - an interface representing an item in the "Repeatable Zone"
+ * @param NonRepeatable Primary - an interface representing your "Non-repeatable Zone"
  * 
- * Read more about using this interface in `docs/slices.md`.
+ * @example
+  ```ts
+  export interface Meal {
+      name: string;
+      price: number;
+  }
+
+  export interface MenuSection {
+      name: string;
+      description: string;
+  }
+
+  export type MenuSlice = Slice<'menu_section', Meal, MenuSection>;
+
+  const slice: MenuSlice = {
+    slice_type: 'menu_section',
+    slice_label: 'some label ...',
+    items: [
+      {
+        name: 'Pizza Funghi',
+        price: 7.5
+      },
+      {
+        name: 'Pizza Tonno',
+        price: 8
+      }
+    ],
+    primary: {
+      name: 'Pizza',
+      description: 'Delicious home-made pizza.'
+    }
+  };
+  ```
  */
-export interface Slice<T, I, P> {
-  slice_type: T;
-  slice_label: any;
-  items: I[];
-  primary: P;
+export interface Slice<
+    SliceType extends string,
+    Repeatable extends object,
+    NonRepeatable extends object
+  > {
+    slice_type: SliceType;
+    slice_label: any;
+    items: Repeatable[];
+    primary: NonRepeatable;
 }
