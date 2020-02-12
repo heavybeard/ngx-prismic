@@ -1,11 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { RichText } from 'prismic-dom/dist/prismic-dom.min.js';
 import { Image } from '../models/image.model';
 import { Paragraphs } from '../models/typography.model';
+import { RichText } from 'prismic-dom';
 
 /**
  * This pipe is used to render a Prismic Image to HTML.
- * 
+ *
  * @example
  * <ng-container [innerHTML]="doc.image | renderImage : 'my extra classes'"></ng-container>
  */
@@ -16,7 +16,7 @@ export class RenderImagePipe implements PipeTransform {
 
     /**
      * Renders an image object returned from Prismic to HTML.
-     * 
+     *
      * @param image image object returned from Prismic
      * @param imgTitle optional title for the image
      * @param imgClasses optional classes for the image
