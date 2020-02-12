@@ -1,0 +1,46 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "commitMessagePrefix": "Renovate:",
+  "labels": [
+    "renovate"
+  ],
+  "prCreation": "not-pending",
+  "assignees": [
+    "evolkmann"
+  ],
+  "stabilityDays": "3",
+  "masterIssue": true,
+  "packageRules": [
+    {
+      "groupName": "definitelyTyped",
+      "packagePatterns": [
+        "^@types/"
+      ],
+      "automerge": true,
+      "automergeType": "branch"
+    },
+    {
+      "groupName": "linters",
+      "packageNames": [
+        "tslint",
+        "codelyzer"
+      ],
+      "automerge": true,
+      "automergeType": "branch"
+    },
+    {
+      "groupName": "testPackages",
+      "packagePatterns": [
+        "^karma",
+        "^jasmine",
+        "^protractor$",
+        "^jest$",
+        "^codecov$"
+      ],
+      "automerge": true,
+      "automergeType": "branch"
+    }
+  ]
+}
